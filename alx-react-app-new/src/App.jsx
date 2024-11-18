@@ -3,6 +3,7 @@ import Header from 'C:/Users/Mercy Asare/Desktop/alx-fe-reactjs/alx-react-app/sr
 import MainContent from 'C:/Users/Mercy Asare/Desktop/alx-fe-reactjs/alx-react-app/src/components/MainContent';
 import Footer from 'C:/Users/Mercy Asare/Desktop/alx-fe-reactjs/alx-react-app/src/components/Footer';
 import UserProfile from 'C:/Users/Mercy Asare/Desktop/alx-fe-reactjs/alx-react-app/src/components/UserProfile';
+import Counter from 'C:/Users/Mercy Asare/Desktop/alx-fe-reactjs/alx-react-app-new/src/components/Counter';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -20,19 +21,18 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p> This is my website</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
       <WelcomeMessage />
       <Header />
       <MainContent />
+      <Counter />
       <Footer />
       <UserProfile name="Akos" age="30" bio="Loves reading" />
     </>
