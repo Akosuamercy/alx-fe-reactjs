@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Routes } from 'react-router-dom'
 
 // @ts-ignore
 import RecipeList from './components/RecipeList'
