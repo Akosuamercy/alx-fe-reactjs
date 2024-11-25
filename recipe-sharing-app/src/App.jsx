@@ -16,11 +16,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-     <RouterProvider router={router} />
-  </StrictMode>,
-)
+const App = () => {
+  return <RouterProvider router={router} />;
+};
 
 
 export default App
