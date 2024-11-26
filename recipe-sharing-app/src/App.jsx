@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
 import './App.css'
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 import RecipeList from './components/RecipeDetails'
 import AddRecipeForm from './components/AddRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
 import EditRecipeForm from './components/EditRecipeForm'
-import { Routes  } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import FavoritesList from './components/FavoritesList'
 import RecommendationsList from './components/RecommendationsList'
 
