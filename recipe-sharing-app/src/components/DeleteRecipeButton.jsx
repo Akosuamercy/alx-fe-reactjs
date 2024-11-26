@@ -1,4 +1,4 @@
-import React from 'react'; 
+/* eslint-disable react/prop-types */
 import { useNavigate } from 'react-router-dom'; 
 import { useRecipeStore } from '../recipeStore'; 
 
@@ -8,7 +8,7 @@ const DeleteRecipeButton = ({ recipeId }) => {
 
   const handleDelete = () => {
     deleteRecipe(recipeId); 
-    navigate('/'); 
+    navigate('/recipes'); 
   };
 
   return (

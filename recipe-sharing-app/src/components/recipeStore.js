@@ -1,5 +1,6 @@
 import create from 'zustand'
 
+// eslint-disable-next-line no-unused-vars
 const useRecipeStore = create(set => ({
   recipes: [],
   addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
@@ -16,6 +17,6 @@ const useRecipeStore = create(set => ({
             recipe.id === recipeId ? { ...recipe, ...updatedData } : recipe
           ),
         })),
-        
+
   setRecipes: (recipes) => set({ recipes })
 }));

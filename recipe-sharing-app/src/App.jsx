@@ -1,8 +1,6 @@
-import { useState } from 'react'
+/* eslint-disable no-unused-vars */
 import './App.css'
-import { createBrowserRouter, RouterProvider, Routes } from 'react-router-dom'
-
-// @ts-ignore
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
