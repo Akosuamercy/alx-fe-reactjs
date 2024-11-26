@@ -1,4 +1,3 @@
-// AddRecipeForm component
 import { useState } from 'react';
 import { useRecipeStore } from './recipeStore';
 
@@ -32,4 +31,4 @@ const AddRecipeForm = () => {
   );
 };
 
-export default AddRecipeForm
+export default AddRecipeForm;
