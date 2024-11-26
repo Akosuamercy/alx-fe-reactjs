@@ -6,6 +6,7 @@ import AddRecipeForm from './components/AddRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
 import EditRecipeForm from './components/EditRecipeForm'
 import { Routes  } from 'react-router-dom';
+import FavoritesList from './components/FavoritesList'
 
     function App() {
       return (
@@ -15,6 +16,7 @@ import { Routes  } from 'react-router-dom';
           <Route path="recipes/id" element={<RecipeDetails />} />
           <Route path="/add" element={<AddRecipeForm />} />
           <Route path="/edit" element={<EditRecipeForm />} />
+          <Route path="/favorites" element={<FavoritesList />} />
           </Routes>
       )
     }

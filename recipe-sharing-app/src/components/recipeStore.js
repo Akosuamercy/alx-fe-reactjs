@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 import create from 'zustand'
 
-// eslint-disable-next-line no-unused-vars
+
 const useRecipeStore = create(set => ({
   recipes: [],
   addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
@@ -29,7 +30,20 @@ const useRecipeStore = create(set => ({
         set((state) => ({
          favorites: state.favorites.filter((id) => id !== recipeId),
       })),
-  
 
-  setRecipes: (recipes) => set({ recipes })
-}));
+      generateRecommendations: () =>
+        set((state) => {
+          const recommended = state.recipes.filter(
+            (recipe) =>
+              state.favorites.includes(recipe.id) && Math.random() > 0.5 
+          );
+          return { recommendations: recommended };
+        }),
+    }));
+
+    (newRecipes) =>
+        set(() => ({
+          recipes: newRecipes,
+        }))
+
+export default useRecipeStore;

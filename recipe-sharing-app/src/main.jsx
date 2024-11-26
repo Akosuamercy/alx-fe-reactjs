@@ -7,14 +7,7 @@ import App from './App';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: App
-
-  },
-]);
+import FavoritesList from './components/FavoritesList';
 
 createRoot(document.getElementById('root')).render(
   
