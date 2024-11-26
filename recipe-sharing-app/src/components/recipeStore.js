@@ -18,5 +18,10 @@ const useRecipeStore = create(set => ({
           ),
         })),
 
+    setSearchTerm: (term) =>
+        set(() => ({
+            searchTerm: term,
+        })),    
+
   setRecipes: (recipes) => set({ recipes })
 }));
