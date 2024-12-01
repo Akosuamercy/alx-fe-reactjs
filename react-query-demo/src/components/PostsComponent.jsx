@@ -29,6 +29,7 @@ if (isError) return <div>Error: {error.message}</div>;
  return(
     <div>
         <h1>Posts Components</h1>
+        <button onClick={() => refetch()}>Refetch Data</button>
         <ul>
         {data.map((post) => (
           <li key={post.id}>
