@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import RegistrationForm from './components/RegistrationForm'
+import FormikForm from './components/formikForm'
 
 function App() {
   
@@ -11,6 +12,7 @@ function App() {
       <h1>Hello World</h1>
       <div className="card">
         <RegistrationForm />
+        <FormikForm />
 
       </div>
       

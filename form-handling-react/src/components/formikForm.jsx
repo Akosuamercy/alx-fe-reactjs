@@ -27,9 +27,10 @@ const FormikForm = () => (
                 <ErrorMessage name="password required" component="div" />
                 <button type="submit">Submit</button>
             </Form>
-        )}
-    </Formik>
-);
+        
+    )};
+</Formik>
 
+);
 
 export default FormikForm;
