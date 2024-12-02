@@ -2,6 +2,7 @@ import './App.css'
 import Profile from './components/Profile'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import BlogPostDetails from './components/BlogPostDetails'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   const { isAuthenticated } = useAuth();
