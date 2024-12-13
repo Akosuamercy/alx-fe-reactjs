@@ -1,25 +1,23 @@
-import { useState } from 'react'
 import './App.css'
+import Search from './components/Search'
+import Axios from './components/Axios';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-  
 
   return (
     <>
       <div>
-        
-      </div>
-      <h1>Hello World</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        
+       
       </div>
       
+         <Search />
+         <Axios />
+       
     </>
-  )
-}
+
+  );
+};
+
 
 export default App

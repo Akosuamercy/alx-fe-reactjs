@@ -1,15 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
-import ReactDOM from 'react-dom/client';
 
 function Search() {
-    const [formData, setFormData] = useState({
-      username: '',
-      password: ''
-    });
+     const [formData, setFormData] = useState({
+         username: '',
+         password: ''
+      });
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+      const handleChange = (e) => {
+          setFormData({ ...formData, [e.target.name]: e.target.value });
       };
 
       const handleSubmit = (e) => {
@@ -26,7 +25,7 @@ function Search() {
               type="text" 
               id="username" 
               placeholder="Github Username" required 
-              value {formData.username}
+          
               onChange={handleChange}
               style= {{ display: 'block', margin: '15px 0'}}
             />
@@ -35,7 +34,7 @@ function Search() {
               type="password" 
               name="password" 
               placeholder="Your Password" required 
-              value {password}
+            
               onChange={handleChange}
               style= {{ display: 'block', margin: '15px 0'}}
             />
