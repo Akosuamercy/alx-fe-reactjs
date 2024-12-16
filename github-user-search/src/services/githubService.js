@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 function githubService() {
-    const apiUrl = 'https://api.github.com/users/{username'
+    const apiUrl = 'https://api.github.com/users/{username}'
     axios.get(apiUrl)
    .then(response => {
        console.log(response.data);
