@@ -1,7 +1,5 @@
 import './App.css'
-import Search from './components/Search'
-import Axios from './components/Axios';
-import FetchUserData from './components/FetchUserData';
+import Search from './components/Search';
 
 function App() {
 
@@ -12,8 +10,6 @@ function App() {
       </div>
       
          <Search />
-         <Axios />
-         <FetchUserData />
          
        
     </>

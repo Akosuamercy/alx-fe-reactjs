@@ -1,82 +1,33 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import { useState } from 'react';
 
+const Search = () => {
+    const [formData, setFormData] = useState({ username: '' });
 
-function Search() {
-  const [formData, setFormData] = useState({
-      username: '',
-      password: ''
-   });
+    const handleChange = (e) => {
+        const { username, value } = e.target;
+        setFormData(prevState => ({ ...prevState, [username]: value }));
+    };
 
-   const handleChange = (e) => {
-       setFormData({ ...formData, [e.target.name]: e.target.value });
-   };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+    };
 
-   const handleSubmit = (e) => {
-     e.preventDefault();
-     alert('Details submitted!');
-   
-
-// GitHub API URL for user search
-const API_URL = 'https://api.github.com/users/';
-
-
-// Handle search input change
-const handleChange = (e) => {
- setUsername(e.target.value);
+    return (
+      <div>
+        <h1>Github User Search</h1>
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                name="username"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder='search Github users'
+            />
+            <button type="submit">Submit</button>
+        </form>
+      </div>
+    );
 };
 
-// Fetch user data from GitHub API
-const handleSearch = async () => {
- if (!username) return; // If no username, do nothing
-
- setLoading(true); // Start loading
- setError(null); // Clear previous error
- setUserData(null); // Clear previous user data
-
- try {
-   const response = await fetch(`${API_URL}${username}`);
-   if (!response.ok) {
-     throw new Error('User not found');
-   }
-   const data = await response.json();
-   setUserData(data); // Update the state with user data
- } catch (err) {
-   setError('Looks like we can’t find the user'); // Set error message
- } finally {
-   setLoading(false); // Stop loading
- }
-};      
- 
-
-
-  return (
-    <div>
-      <h1>GitHub User Search</h1>
-      <input
-        type="text"
-        value={username}
-        onChange={handleChange}
-        placeholder="Enter GitHub username"
-      />
-      <button onClick={handleSearch}>Search</button>
-
-      {loading && <p>Loading...</p>}
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {userData && (
-        <div>
-          <h2>{userData.name || 'No Name Available'}</h2>
-          <img src={userData.avatar_url} alt={userData.login} width={100} />
-          <p>
-            <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
-              Visit GitHub Profile
-            </a>
-          </p>
-        </div>
-      )}
-    </div>
-  );
-};
-}
+export default Search;
