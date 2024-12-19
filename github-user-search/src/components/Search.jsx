@@ -25,6 +25,7 @@ const Search = () => {
 
   return (
     <div>
+      <h1>Github User Search</h1>
       <input
         type="text"
         value={username}
@@ -53,6 +54,7 @@ const Search = () => {
           <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
             Visit GitHub Profile
           </a>
+          <githubService />
         </div>
       )}
     </div>
