@@ -16,109 +16,102 @@ const Search = () => {
         console.log(formData);
     };
 
-    const Search = () => {
-      const [username, setUsername] = useState('');
-      const [location, setLocation] = useState('');
-      const [minRepos, setMinRepos] = useState('');
-      const [userData, setUserData] = useState(null);
-      const [error, setError] = useState('');
-      const [loading, setLoading] = useState(false);
-    
-      const handleSearch = async () => {
-        setLoading(true);
-        setError('');
+  const Search = () => {
+  const [username, setUsername] = useState('');
+  const [location, setLocation] = useState('');
+  const [minRepos, setMinRepos] = useState('');
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = async () => {
+    setLoading(true);
+    setError('');
+    setUserData(null);
+
+    try {
+      const data = await fetchUserData(username, location, minRepos);
+      if (data.length === 0) {
+        setError('No matching users found');
         setUserData(null);
-    
-        try {
-          const data = await fetchUserData(username);
-          // Filter by location and minimum repositories if provided
-          if (
-            (location && data.location && !data.location.includes(location)) ||
-            (minRepos && data.public_repos < parseInt(minRepos))
-          ) {
-            setError('No matching user found with the specified filters.');
-            setUserData(null);
-          } else {
-            setUserData(data);
-            setLoading(false);
-          }
-        } catch (error) {
-          setError('Looks like we cant find the user');
-          setLoading(false);
-        }
-      };
-    
-      return (
+      } else {
+        setUserData(data);
+        setLoading(false);
+      }
+    } catch (err) {
+      setError('Looks like we can\'t find the user');
+      setLoading(false);
+    }
+  };
 
-        <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
-          <h2 className="text-2xl font-semibold text-center mb-6">GitHub User Search</h2>
-    
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">GitHub Username</label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter GitHub username"
-                className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-              />
-                 <button type="submit">Submit</button>
+  return (
+    <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-semibold text-center mb-6">GitHub User Search</h2>
 
-            </div>
-    
-            <div>
-              <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location (Optional)</label>
-              <input
-                type="text"
-                id="location"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="Enter location"
-                className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
-    
-            <div>
-              <label htmlFor="minRepos" className="block text-sm font-medium text-gray-700">Minimum Repositories (Optional)</label>
-              <input
-                type="number"
-                id="minRepos"
-                value={minRepos}
-                onChange={(e) => setMinRepos(e.target.value)}
-                placeholder="Enter minimum repositories"
-                className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
-    
-            <div className="flex justify-center">
-              <button
-                onClick={handleSearch}
-                className="w-full bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                Search
-              </button>
-            </div>
-          </div>
-    
-          {/* Conditional Rendering */}
-          {loading && <p className="text-center mt-4 text-gray-500">Loading...</p>}
-          {error && <p className="text-center mt-4 text-red-500">{error}</p>}
-    
-          {/* Display user data if available */}
-          {userData && !loading && !error && (
-            <div className="mt-6 text-center">
+      <div className="space-y-4">
+        <div>
+          <label htmlFor="username" className="block text-sm font-medium text-gray-700">GitHub Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter GitHub username"
+            className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location (Optional)</label>
+          <input
+            type="text"
+            id="location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Enter location"
+            className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="minRepos" className="block text-sm font-medium text-gray-700">Minimum Repositories (Optional)</label>
+          <input
+            type="number"
+            id="minRepos"
+            value={minRepos}
+            onChange={(e) => setMinRepos(e.target.value)}
+            placeholder="Enter minimum repositories"
+            className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        <div className="flex justify-center">
+          <button
+            onClick={handleSearch}
+            className="w-full bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      {/* Conditional Rendering */}
+      {loading && <p className="text-center mt-4 text-gray-500">Loading...</p>}
+      {error && <p className="text-center mt-4 text-red-500">{error}</p>}
+
+      {/* Display user data if available */}
+      {userData && !loading && !error && (
+        <div className="mt-6">
+          {userData.map((user) => (
+            <div key={user.id} className="mb-6">
               <img
-                src={userData.avatar_url}
-                alt={userData.login}
+                src={user.avatar_url}
+                alt={user.login}
                 className="mx-auto rounded-full w-24 h-24"
               />
-              <h3 className="mt-4 text-lg font-semibold">{userData.name || userData.login}</h3>
-              <p className="text-sm text-gray-600">{userData.bio || 'No bio available'}</p>
-              <p className="mt-2 text-sm text-gray-500">{userData.location || 'No location provided'}</p>
+              <h3 className="mt-4 text-lg font-semibold">{user.login}</h3>
               <a
-                href={userData.html_url}
+                href={user.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-block text-indigo-600 hover:text-indigo-800"
@@ -126,10 +119,13 @@ const Search = () => {
                 Visit GitHub Profile
               </a>
             </div>
-          )}
-          <form onSubmit={handleSubmit}></form>
+          ))}
         </div>
-      );
-    };
-};   
+      )}
+    </div>
+  );
+};
+};
+
+
 export default Search;
