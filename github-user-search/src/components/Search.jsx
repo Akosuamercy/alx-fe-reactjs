@@ -3,6 +3,19 @@ import { useState } from 'react';
 import githubService from '../services/githubService';
 
 const Search = () => {
+  const [formData, setFormData] = useState({ username: '', email: '' });
+
+    const handleChange = (e) => {
+        const { username, value } = e.target;
+        setFormData(prevState => ({ ...prevState, [username]: value }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+    };
+
+
   const [username, setUsername] = useState('');
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState('');
@@ -18,7 +31,7 @@ const Search = () => {
       setUserData(data);
       setLoading(false);
     } catch (error) {
-      setError('Looks like we can\'t find the user');
+      setError("Looks like we cant find the user");
       setLoading(false);
     }
   };
@@ -26,13 +39,15 @@ const Search = () => {
   return (
     <div>
       <h1>Github User Search</h1>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Enter GitHub username"
-      />
-      <button onClick={handleSearch}>Search</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter GitHub username"
+        />
+       <button onClick={handleSearch}>Search</button>
+      </form>
 
       {/* Conditional Rendering */}
       {loading && <p>Loading...</p>}
